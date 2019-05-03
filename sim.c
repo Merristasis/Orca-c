@@ -475,11 +475,11 @@ END_OPERATOR
 
 BEGIN_OPERATOR(if)
   LOWERCASE_REQUIRES_BANG;
+  PORT(0, -1, IN);
   PORT(0, 1, IN);
-  PORT(0, 2, IN);
   PORT(1, 0, OUT);
-  Glyph g0 = PEEK(0, 1);
-  Glyph g1 = PEEK(0, 2);
+  Glyph g0 = PEEK(0, -1);
+  Glyph g1 = PEEK(0, 1);
   POKE(1, 0, g0 == g1 ? '*' : '.');
 END_OPERATOR
 
@@ -506,11 +506,11 @@ END_OPERATOR
 
 BEGIN_OPERATOR(increment)
   LOWERCASE_REQUIRES_BANG;
+  PORT(0, -1, IN);
   PORT(0, 1, IN);
-  PORT(0, 2, IN);
   PORT(1, 0, IN | OUT);
-  Usz a = index_of(PEEK(0, 1));
-  Usz b = index_of(PEEK(0, 2));
+  Usz a = index_of(PEEK(0, -1));
+  Usz b = index_of(PEEK(0, 1));
   Usz val = index_of(PEEK(1, 0));
   if (a < b) {
     if (val < a || val >= b - 1)
@@ -524,7 +524,7 @@ BEGIN_OPERATOR(increment)
       --val;
   } else {
     return;
-  }
+    }
   POKE(1, 0, glyph_of(val));
 END_OPERATOR
 
@@ -561,7 +561,7 @@ BEGIN_OPERATOR(loop)
   LOWERCASE_REQUIRES_BANG;
   PORT(0, -1, IN | PARAM);
   Usz len = safe_index_of(PEEK(0, -1));
-  if (len > width - x - 1)
+   if (len > width - x - 1)
     len = width - x - 1;
   Mark* m = mbuffer + y * width + x + 1;
   for (Usz i = 0; i < len; ++i) {
