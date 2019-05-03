@@ -417,11 +417,11 @@ END_OPERATOR
 
 BEGIN_OPERATOR(add)
   LOWERCASE_REQUIRES_BANG;
+  PORT(0, -1, IN);
   PORT(0, 1, IN);
-  PORT(0, 2, IN);
   PORT(1, 0, OUT);
-  Usz a = index_of(PEEK(0, 1));
-  Usz b = index_of(PEEK(0, 2));
+  Usz a = index_of(PEEK(0, -1));
+  Usz b = index_of(PEEK(0, 1));
   POKE(1, 0, indexed_glyphs[(a + b) % Glyphs_index_count]);
 END_OPERATOR
 
