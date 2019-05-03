@@ -43,7 +43,7 @@ Run `./tool --help` to see usage info. Examples:
 ```sh
 ./tool -c clang --portmidi build release orca
     # Build the terminal ui with a compiler named
-    # clang-7, with optimizations enabled, and with
+    # clang, with optimizations enabled, and with
     # PortMIDI enabled for MIDI output.
     # Binary placed at build/release/orca
 
