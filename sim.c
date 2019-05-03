@@ -579,6 +579,7 @@ BEGIN_OPERATOR(loop)
   for (Usz i = 0; i < len; ++i) {
     gs[i] = buff[i];
   }
+
 END_OPERATOR
 
 BEGIN_OPERATOR(modulo)

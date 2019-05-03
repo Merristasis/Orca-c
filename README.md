@@ -41,7 +41,7 @@ make clean      # removes build/
 Run `./tool --help` to see usage info. Examples:
 
 ```sh
-./tool -c clang-7 --portmidi build release orca
+./tool -c clang --portmidi build release orca
     # Build the terminal ui with a compiler named
     # clang-7, with optimizations enabled, and with
     # PortMIDI enabled for MIDI output.
